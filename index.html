@@ -1,181 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cozy Corner Café</title>
-  <style>
-    :root {
-      --color-primary: #6b4f4f;
-      --color-accent: #c49e6c;
-      --color-neutral-light: #f5f5f5;
-      --color-neutral-dark: #333;
-      --font-sans: 'Helvetica Neue', Arial, sans-serif;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: var(--font-sans); line-height: 1.6; color: var(--color-neutral-dark); }
-    a { text-decoration: none; color: inherit; }
-    header { background: var(--color-primary); color: #fff; padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; }
-    header nav { display: flex; justify-content: space-between; align-items: center; }
-    header .logo { font-size: 1.5rem; font-weight: bold; }
-    header ul { list-style: none; display: flex; gap: 1.5rem; }
-    header ul li a { color: #fff; font-weight: 500; }
-    /* Hero */
-    #hero {
-      background: url("[object Object]") center/cover no-repeat;
-      color: #fff;
-      text-align: center;
-      padding: 8rem 2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    #hero h1 { font-size: 3rem; margin-bottom: 0.5rem; }
-    #hero p { font-size: 1.25rem; margin-bottom: 1.5rem; max-width: 600px; }
-    #hero .cta { background: var(--color-accent); color: #fff; padding: 0.75rem 1.5rem; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem; }
-    /* About */
-    #about { background: var(--color-neutral-light); padding: 4rem 2rem; display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; }
-    #about .text { flex: 1 1 300px; }
-    #about .text h2 { margin-bottom: 1rem; }
-    #about .text p { margin-bottom: 1.5rem; }
-    #about .text .cta { background: var(--color-primary); color: #fff; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; }
-    #about .image { flex: 1 1 300px; }
-    #about .image img { width: 100%; height: auto; border-radius: 8px; }
-    /* Menu Overview */
-    #menu_overview { background: var(--color-accent); color: #fff; padding: 4rem 2rem; }
-    #menu_overview h2 { text-align: center; margin-bottom: 2rem; }
-    .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
-    .menu-card { background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 8px; text-align: center; }
-    .menu-card img { width: 100%; height: 150px; object-fit: cover; border-radius: 4px; margin-bottom: 1rem; }
-    .menu-card h3 { margin-bottom: 0.5rem; }
-    /* Daily Specials */
-    #daily_specials { background: var(--color-accent); color: #fff; padding: 4rem 2rem; }
-    #daily_specials h2 { text-align: center; margin-bottom: 2rem; }
-    .carousel { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 1rem; }
-    .carousel-item { min-width: 250px; background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px; scroll-snap-align: start; flex-shrink: 0; }
-    .carousel-item img { width: 100%; height: 150px; object-fit: cover; border-radius: 4px; margin-bottom: 0.5rem; }
-    /* Atmosphere */
-    #atmosphere { background: var(--color-neutral-light); padding: 4rem 2rem; }
-    #atmosphere h2 { text-align: center; margin-bottom: 2rem; }
-    .photo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
-    .photo-grid img { width: 100%; height: 180px; object-fit: cover; border-radius: 8px; }
-    /* Contact Form */
-    #contact_form { background: var(--color-primary); color: #fff; padding: 4rem 2rem; }
-    #contact_form h2 { text-align: center; margin-bottom: 2rem; }
-    .contact-wrapper { display: flex; flex-wrap: wrap; gap: 2rem; }
-    .contact-form { flex: 1 1 300px; }
-    .contact-form input, .contact-form textarea { width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: none; border-radius: 4px; }
-    .contact-form button { background: var(--color-accent); color: #fff; padding: 0.75rem 1.5rem; border: none; border-radius: 4px; cursor: pointer; }
-    .map { flex: 1 1 300px; }
-    .map iframe { width: 100%; height: 300px; border: 0; border-radius: 8px; }
-    footer { background: var(--color-neutral-dark); color: #fff; text-align: center; padding: 1rem; font-size: 0.9rem; }
-    @media (max-width: 600px) {
-      #hero h1 { font-size: 2rem; }
-      header ul { flex-direction: column; gap: 0.5rem; }
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Cozy Corner Café</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root {
+    --primary-bg: #6b4f4f;
+    --primary-color: #fff;
+    --accent-bg: #c49e6c;
+    --accent-color: #fff;
+    --neutral-bg: #f5f5f5;
+    --neutral-color: #333;
+    --font-sans: Arial, Helvetica, sans-serif;
+}
+* { box-sizing: border-box; margin:0; padding:0; }
+body {
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    color: var(--neutral-color);
+}
+a { text-decoration: none; color: inherit; }
+header, section, footer { width: 100%; }
+button, input, textarea {
+    font-family: inherit;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+}
+button { cursor: pointer; }
+img { max-width: 100%; height: auto; display: block; }
+
+/* HERO */
+#hero {
+    background: url('[object Object]') center/cover no-repeat;
+    color: var(--primary-color);
+    text-align: center;
+    padding: 8rem 1rem;
+}
+#hero h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+#hero p { font-size: 1.25rem; margin-bottom: 1.5rem; }
+#hero .cta { background: var(--accent-bg); color: var(--accent-color); padding: 0.75rem 1.5rem; font-size: 1rem; border-radius: 4px; }
+
+/* ABOUT */
+#about {
+    background: var(--neutral-bg);
+    color: var(--neutral-color);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 4rem 1rem;
+}
+#about .text {
+    flex: 1 1 300px;
+    padding: 1rem;
+}
+#about .text h2 { margin-bottom: 1rem; }
+#about .text p { margin-bottom: 1.5rem; }
+#about .text .cta { background: var(--primary-bg); color: var(--primary-color); }
+#about .image {
+    flex: 1 1 300px;
+    padding: 1rem;
+}
+
+/* MENU OVERVIEW */
+#menu_overview {
+    background: var(--accent-bg);
+    color: var(--accent-color);
+    padding: 4rem 1rem;
+    text-align: center;
+}
+#menu_overview h2 { margin-bottom: 2rem; }
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+.menu-card {
+    background: var(--primary-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: left;
+}
+.menu-card img { height: 150px; object-fit: cover; }
+.menu-card .content { padding: 1rem; }
+.menu-card h3 { margin-bottom: 0.5rem; }
+
+/* DAILY SPECIALS */
+#daily_specials {
+    background: var(--accent-bg);
+    color: var(--accent-color);
+    padding: 4rem 1rem;
+    text-align: center;
+}
+#daily_specials h2 { margin-bottom: 2rem; }
+.carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+    scroll-snap-type: x mandatory;
+}
+.carousel-item {
+    min-width: 250px;
+    background: var(--primary-bg);
+    border-radius: 8px;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+}
+.carousel-item img { height: 150px; object-fit: cover; border-top-left-radius:8px; border-top-right-radius:8px; }
+.carousel-item .info { padding: 0.75rem; }
+
+/* ATMOSPHERE */
+#atmosphere {
+    background: var(--neutral-bg);
+    color: var(--neutral-color);
+    padding: 4rem 1rem;
+    text-align: center;
+}
+#atmosphere h2 { margin-bottom: 2rem; }
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.5rem;
+}
+
+/* CONTACT FORM */
+#contact_form {
+    background: var(--primary-bg);
+    color: var(--primary-color);
+    padding: 4rem 1rem;
+}
+#contact_form h2 { text-align: center; margin-bottom: 2rem; }
+.contact-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.contact-form {
+    flex: 1 1 300px;
+}
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+.contact-form button {
+    background: var(--accent-bg);
+    color: var(--accent-color);
+    align-self: flex-start;
+    margin-top: 0.5rem;
+}
+.map {
+    flex: 1 1 300px;
+}
+.map iframe {
+    width: 100%;
+    height: 100%;
+    border:0;
+    border-radius:8px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    #hero { padding: 5rem 1rem; }
+    #about { flex-direction: column; }
+}
+</style>
 </head>
 <body>
-  <header>
-    <nav>
-      <div class="logo">Cozy Corner Café</div>
-      <ul>
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#menu_overview">Menu</a></li>
-        <li><a href="#daily_specials">Specials</a></li>
-        <li><a href="#contact_form">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <section id="hero">
+<header id="hero">
     <h1>Welcome to Cozy Corner Café</h1>
-    <p>Where every cup feels like home. Freshly brewed coffee, homemade pastries, and a warm atmosphere await you.</p>
-    <button class="cta">Explore Our Menu</button>
-  </section>
+    <p>Your neighborhood spot for fresh brews and warm vibes</p>
+    <a href="#menu_overview" class="cta">Explore Our Menu</a>
+</header>
 
-  <section id="about">
+<section id="about">
     <div class="image">
-      <img src="[object Object]" alt="Cozy interior of the café">
+        <img src="[object Object]" alt="Cozy interior of the café">
     </div>
     <div class="text">
-      <h2>Our Story</h2>
-      <p>Founded in 2015, Cozy Corner Café began as a small neighborhood spot for coffee lovers and creatives. Our mission is to provide a welcoming space where community members can relax, work, or catch up with friends over delicious food and drinks.</p>
-      <button class="cta">Learn More</button>
+        <h2>Our Story</h2>
+        <p>Founded in 2015, Cozy Corner Café has become a beloved gathering place for locals. We believe in serving quality coffee, homemade pastries, and creating a welcoming space where friends, remote workers, and students can feel at home.</p>
+        <a href="#atmosphere" class="cta">Learn More</a>
     </div>
-  </section>
+</section>
 
-  <section id="menu_overview">
-    <h2>Menu Highlights</h2>
+<section id="menu_overview">
+    <h2>Delicious Selections</h2>
     <div class="menu-grid">
-      <div class="menu-card">
-        <img src="[object Object]" alt="Artisan Coffee">
-        <h3>Artisan Coffee</h3>
-        <p>Hand‑crafted espresso drinks made from ethically sourced beans.</p>
-      </div>
-      <div class="menu-card">
-        <img src="[object Object]" alt="Fresh Pastries">
-        <h3>Fresh Pastries</h3>
-        <p>Daily baked croissants, muffins, and scones, straight from our kitchen.</p>
-      </div>
-      <div class="menu-card">
-        <img src="[object Object]" alt="Savory Snacks">
-        <h3>Savory Snacks</h3>
-        <p>Hearty sandwiches, salads, and soups perfect for any time of day.</p>
-      </div>
+        <div class="menu-card">
+            <img src="[object Object]" alt="Steaming cup of coffee">
+            <div class="content">
+                <h3>Coffee</h3>
+                <p>From classic espresso to seasonal lattes, crafted with beans sourced responsibly.</p>
+            </div>
+        </div>
+        <div class="menu-card">
+            <img src="[object Object]" alt="Assorted pastries">
+            <div class="content">
+                <h3>Pastries</h3>
+                <p>Freshly baked croissants, muffins, and sweet treats made daily.</p>
+            </div>
+        </div>
+        <div class="menu-card">
+            <img src="[object Object]" alt="Gourmet sandwich">
+            <div class="content">
+                <h3>Sandwiches</h3>
+                <p>Hearty, wholesome sandwiches perfect for a quick lunch or snack.</p>
+            </div>
+        </div>
     </div>
-  </section>
+</section>
 
-  <section id="daily_specials">
+<section id="daily_specials">
     <h2>Today's Specials</h2>
     <div class="carousel">
-      <div class="carousel-item">
-        <img src="[object Object]" alt="Special Latte">
-        <h4>Caramel Sea Salt Latte</h4>
-        <p>A sweet‑salty twist on our classic latte.</p>
-      </div>
-      <div class="carousel-item">
-        <img src="[object Object]" alt="Special Pastry">
-        <h4>Blueberry Lemon Scone</h4>
-        <p>Bright and tangy, baked fresh this morning.</p>
-      </div>
-      <div class="carousel-item">
-        <img src="[object Object]" alt="Special Soup">
-        <h4>Roasted Tomato Basil Soup</h4>
-        <p>Warm, comforting, and perfect with a crusty roll.</p>
-      </div>
+        <div class="carousel-item">
+            <img src="[object Object]" alt="Special latte">
+            <div class="info">
+                <h4>Honey Lavender Latte</h4>
+                <p>A soothing blend of lavender-infused milk and honey.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="[object Object]" alt="Special pastry">
+            <div class="info">
+                <h4>Blueberry Scone</h4>
+                <p>Fresh blueberries baked into a buttery scone.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="[object Object]" alt="Special sandwich">
+            <div class="info">
+                <h4>Avocado Toast</h4>
+                <p>Whole grain toast topped with ripe avocado and a sprinkle of chili flakes.</p>
+            </div>
+        </div>
     </div>
-  </section>
+</section>
 
-  <section id="atmosphere">
-    <h2>Our Atmosphere</h2>
+<section id="atmosphere">
+    <h2>Our Space</h2>
     <div class="photo-grid">
-      <img src="[object Object]" alt="Cozy seating area">
-      <img src="[object Object]" alt="Quiet corner for studying">
-      <img src="[object Object]" alt="Community board">
-      <img src="[object Object]" alt="Outdoor patio">
+        <img src="[object Object]" alt="Cozy seating area">
+        <img src="[object Object]" alt="Large window with natural light">
+        <img src="[object Object]" alt="Community board">
+        <img src="[object Object]" alt="Quiet corner for studying">
     </div>
-  </section>
+</section>
 
-  <section id="contact_form">
+<section id="contact_form">
     <h2>Get in Touch</h2>
     <div class="contact-wrapper">
-      <form class="contact-form" action="#" method="post">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-      <div class="map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019123456789!2d-122.4012345!3d37.7856789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c1234567%3A0xabcdef1234567890!2sCozy%20Corner%20Caf%C3%A9!5e0!3m2!1sen!2sus!4v1600000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
-      </div>
+        <div class="contact-form">
+            <form action="#" method="post">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+        <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019123456789!2d-122.419415284681!3d37.774929779759!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c1234567%3A0xabcdef1234567890!2sCozy%20Corner%20Caf%C3%A9!5e0!3m2!1sen!2sus!4v1600000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+        </div>
     </div>
-  </section>
+</section>
 
-  <footer>
-    © 2026 Cozy Corner Café • 123 Main Street, Cityville • (555) 123‑4567
-  </footer>
+<footer style="background:#333;color:#fff;text-align:center;padding:1rem;">
+    <p>&copy; 2026 Cozy Corner Café. All rights reserved.</p>
+</footer>
+
 </body>
 </html>
